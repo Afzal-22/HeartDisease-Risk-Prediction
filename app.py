@@ -219,7 +219,7 @@ values = dict(
 st.markdown(
     """
     <div class="hero">
-        <h1>❤️ Heart Disease Predictor</h1>
+        <h1>Heart Disease Predictor</h1>
     </div>
     """,
     unsafe_allow_html=True,
