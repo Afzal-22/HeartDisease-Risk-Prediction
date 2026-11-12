@@ -303,9 +303,15 @@ if st.session_state.history:
     st.dataframe(
         history_df.iloc[::-1], use_container_width=True, hide_index=True
     )
-    st.download_button(
-        "⬇️ Download session history (CSV)",
-        history_df.to_csv(index=False),
-        file_name="prediction_history.csv",
-        mime="text/csv",
-    )
+    col_download, col_clear, _ = st.columns([2, 2, 4])
+    with col_download:
+        st.download_button(
+            "⬇️ Download session history (CSV)",
+            history_df.to_csv(index=False),
+            file_name="prediction_history.csv",
+            mime="text/csv",
+        )
+    with col_clear:
+        if st.button("🗑️ Clear history"):
+            st.session_state.history = []
+            st.rerun()
